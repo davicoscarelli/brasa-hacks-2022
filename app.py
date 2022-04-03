@@ -5,6 +5,7 @@ import tensorflow_hub as hub
 import os
 
 model = tf.keras.models.load_model('model.h5',custom_objects={'KerasLayer':hub.KerasLayer})
+print("loaded model")
 
 app = Flask(__name__)
 @app.route("/model", methods=['POST'])
@@ -19,6 +20,7 @@ def serve_model():
     # x = np.expand_dims(x, axis=0)
     # x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
     # print("rodou x")
+    print(img)
     preds = model.predict(img)
     label_map = {'dangerously deep': 0,
     'feet-dont-touch deep': 1,
