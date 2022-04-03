@@ -13,27 +13,27 @@ def serve_model():
   try:
     print("entrou")
     request_data = request.get_json(force=True)
-    return request_data
-    # img = request_data['img']
-    # # img = np.array(img).reshape(-1, 224, 224, 3)
-    # # print("reshape")
-    # # x = tf.keras.preprocessing.image.img_to_array(img)
-    # # x = np.expand_dims(x, axis=0)
-    # # x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
-    # print("rodou x")
-    # preds = model.predict(img)
-    # print("predicted")
-    # label_map = {'dangerously deep': 0,
-    # 'feet-dont-touch deep': 1,
-    # 'knee deep': 2,
-    # 'waist deep': 3}
-    # print(preds)
-    # for pred, value in label_map.items():    
-    #     if value == np.argmax(preds):
-    #         print('Predicted class is:', pred)
-    #         print('With a confidence score of: ', np.max(preds))
+    img = request_data['img']
+    # img = np.array(img).reshape(-1, 224, 224, 3)
+    # print("reshape")
+    # x = tf.keras.preprocessing.image.img_to_array(img)
+    # x = np.expand_dims(x, axis=0)
+    # x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
+    print("rodou x")
+    preds = model.predict(img)
+    print("predicted")
+    label_map = {'dangerously deep': 0,
+    'feet-dont-touch deep': 1,
+    'knee deep': 2,
+    'waist deep': 3}
+    print(preds)
+    for pred, value in label_map.items():    
+        if value == np.argmax(preds):
+            print('Predicted class is:', pred)
+            print('With a confidence score of: ', np.max(preds))
+            return str(pred) +" "+ str(np.max(preds))
 
-    # return str(pred) +" "+ str(preds)
+    
   except:
     return "An exception occurred"
 
