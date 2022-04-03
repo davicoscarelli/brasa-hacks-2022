@@ -2,7 +2,8 @@ from flask import Flask, request
 import numpy as np 
 import tensorflow as tf
 import tensorflow_hub as hub
- 
+import os
+
 model = tf.keras.models.load_model('model.h5',custom_objects={'KerasLayer':hub.KerasLayer})
 
 app = Flask(__name__)
@@ -33,4 +34,5 @@ def serve_model():
 
  
 if __name__ == '__main__':
-  app.run(host='0.0.0.0:5000')
+  port = int(os.environ.get('PORT', 5000))
+  app.run(host='0.0.0.0', port=port)
