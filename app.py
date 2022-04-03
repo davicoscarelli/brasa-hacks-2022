@@ -9,6 +9,7 @@ model = tf.keras.models.load_model('model.h5',custom_objects={'KerasLayer':hub.K
 app = Flask(__name__)
 @app.route("/model", methods=['POST'])
 def serve_model():
+  print(request.get_json(force=True))
   try:
     print("entrou")
     request_data = request.get_json(force=True)
