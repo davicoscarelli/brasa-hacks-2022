@@ -31,6 +31,6 @@ def serve_model():
   except:
     return "An exception occurred"
 
-
+ 
 if __name__ == '__main__':
   app.run(host='0.0.0.0')
