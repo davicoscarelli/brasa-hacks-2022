@@ -3,7 +3,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 import tensorflow as tf
 import tensorflow_hub as hub
-
+ 
 model = tf.keras.models.load_model('model.h5',custom_objects={'KerasLayer':hub.KerasLayer})
 
 app = Flask(__name__)
