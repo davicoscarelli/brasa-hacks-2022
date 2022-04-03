@@ -9,25 +9,28 @@ model = tf.keras.models.load_model('model.h5',custom_objects={'KerasLayer':hub.K
 app = Flask(__name__)
 @app.route("/model", methods=['POST'])
 def serve_model():
-  print("entrou")
-  request_data = request.get_json(force=True)
-  img = request_data['img']
-  img = np.array(img).reshape(-1, 224, 224, 3)
-  x = tf.keras.preprocessing.image.img_to_array(img)
-  x = np.expand_dims(x, axis=0)
-  x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
-  preds = model.predict(x)
-  label_map = {'dangerously deep': 0,
-  'feet-dont-touch deep': 1,
-  'knee deep': 2,
-  'waist deep': 3}
+  try:
+    print("entrou")
+    request_data = request.get_json(force=True)
+    img = request_data['img']
+    img = np.array(img).reshape(-1, 224, 224, 3)
+    x = tf.keras.preprocessing.image.img_to_array(img)
+    x = np.expand_dims(x, axis=0)
+    x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
+    preds = model.predict(x)
+    label_map = {'dangerously deep': 0,
+    'feet-dont-touch deep': 1,
+    'knee deep': 2,
+    'waist deep': 3}
 
-  for pred, value in label_map.items():    
-      if value == np.argmax(preds):
-          print('Predicted class is:', pred)
-          print('With a confidence score of: ', np.max(preds))
+    for pred, value in label_map.items():    
+        if value == np.argmax(preds):
+            print('Predicted class is:', pred)
+            print('With a confidence score of: ', np.max(preds))
 
-  return str(pred) +" "+ str(preds)
+    return str(pred) +" "+ str(preds)
+  except:
+    return "An exception occurred"
 
 
 if __name__ == '__main__':
