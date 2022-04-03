@@ -1,6 +1,5 @@
 from flask import Flask, request
 import numpy as np 
-from tensorflow.keras.models import load_model
 import tensorflow as tf
 import tensorflow_hub as hub
  
