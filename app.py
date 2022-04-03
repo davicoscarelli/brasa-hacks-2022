@@ -9,9 +9,8 @@ model = tf.keras.models.load_model('model.h5',custom_objects={'KerasLayer':hub.K
 
 app = Flask(__name__)
 @app.route("/model", methods=['POST'])
-
-
 def serve_model():
+  print("entrou")
   request_data = request.get_json(force=True)
   img = request_data['img']
   img = np.array(img).reshape(-1, 224, 224, 3)
