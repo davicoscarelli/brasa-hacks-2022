@@ -26,7 +26,6 @@ def serve_model():
     'feet-dont-touch deep': 1,
     'knee deep': 2,
     'waist deep': 3}
-    print(preds)
     for pred, value in label_map.items():    
         if value == np.argmax(preds):
             print('Predicted class is:', pred)
