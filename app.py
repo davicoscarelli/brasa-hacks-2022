@@ -13,13 +13,13 @@ def serve_model():
     print("entrou")
     request_data = request.get_json(force=True)
     img = request_data['img']
-    img = np.array(img).reshape(-1, 224, 224, 3)
-    print("reshape")
-    x = tf.keras.preprocessing.image.img_to_array(img)
-    x = np.expand_dims(x, axis=0)
-    x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
-    print("rodou x")
-    preds = model.predict(x)
+    # img = np.array(img).reshape(-1, 224, 224, 3)
+    # print("reshape")
+    # x = tf.keras.preprocessing.image.img_to_array(img)
+    # x = np.expand_dims(x, axis=0)
+    # x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
+    # print("rodou x")
+    preds = model.predict(img)
     label_map = {'dangerously deep': 0,
     'feet-dont-touch deep': 1,
     'knee deep': 2,
