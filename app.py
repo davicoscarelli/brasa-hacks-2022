@@ -1,6 +1,5 @@
 from flask import Flask, request
 import numpy as np 
-import pickle
 from tensorflow.keras.models import load_model
 import tensorflow as tf
 import tensorflow_hub as hub
@@ -12,7 +11,7 @@ app = Flask(__name__)
 @app.route("/model", methods=['POST'])
 
 
-def serve_model(image):
+def serve_model():
   request_data = request.get_json(force=True)
   img = request_data['img']
   img = np.array(img).reshape(-1, 224, 224, 3)
@@ -34,4 +33,4 @@ def serve_model(image):
 
 
 if __name__ == '__main__':
-  app.run()
+  app.run(port=5000)
