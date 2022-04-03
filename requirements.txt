@@ -41,7 +41,6 @@ nest-asyncio==1.5.1
 notebook==6.4.4
 numpy==1.19.5
 opencv-python==4.5.5.64
-openvino==2022.1.0
 packaging==21.0
 pandocfilters==1.5.0
 parso==0.8.2
