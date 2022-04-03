@@ -19,9 +19,9 @@ def serve_model():
     # x = tf.keras.preprocessing.image.img_to_array(img)
     # x = np.expand_dims(x, axis=0)
     # x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
-    # print("rodou x")
-    print(img)
+    print("rodou x")
     preds = model.predict(img)
+    print("predicted")
     label_map = {'dangerously deep': 0,
     'feet-dont-touch deep': 1,
     'knee deep': 2,
