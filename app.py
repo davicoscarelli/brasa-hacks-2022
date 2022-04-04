@@ -19,7 +19,7 @@ def serve_model():
     # img = request_data['img']
     file = request.files['image'].read()
 
-    w, h = image.size
+    w, h = file.size
     # file = Image.open(BytesIO(request.files['image'].read()))
 
     print("file")
