@@ -14,7 +14,7 @@ def serve_model():
     print("entrou")
     # request_data = request.get_json(force=True)
     file = request.files['image'].read() ## byte file
-    npimg = np.fromstring(file, np.uint8)
+    npimg = np.frombuffer(file, np.uint8)
     # print(npimg)
     # img = request_data['img']
     img = np.array(npimg).reshape(-1, 224, 224, 3)
