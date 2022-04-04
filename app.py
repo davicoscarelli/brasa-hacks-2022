@@ -42,7 +42,8 @@ def serve_model():
             return str(pred) +" "+ str(np.max(preds))
 
     
-  except:
+  except Exception as e:
+    print(e)
     return "An exception occurred"
 
  
