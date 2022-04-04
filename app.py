@@ -14,13 +14,12 @@ def serve_model():
     print("entrou")
     # request_data = request.get_json(force=True)
     file = request.files['image'].read() ## byte file
-    print(file)
-    npimg = np.fromstring(file, np.uint8)
+    npimg = np.frombuffer(file, np.uint8)
     print(npimg)
     # img = request_data['img']
-    # img = np.array(img).reshape(-1, 224, 224, 3)
+    img = np.array(npimg).reshape(-1, 224, 224, 3)
     print("reshape")
-    x = tf.keras.preprocessing.image.img_to_array(file)
+    x = tf.keras.preprocessing.image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
     print("rodou x")
