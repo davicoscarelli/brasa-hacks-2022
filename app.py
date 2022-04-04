@@ -18,7 +18,7 @@ def serve_model():
     # request_data = request.get_json(force=True)
     # img = request_data['img']
     # file = request.files['image'].read()
-    file = Image.open(BytesIO(request.files['image']))
+    file = Image.open(BytesIO(request.files['image'].read()))
 
     print("file")
     # img = np.array(img).reshape(-1, 224, 224, 3)
