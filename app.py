@@ -16,25 +16,25 @@ def serve_model():
   try:
     print("entrou")
     # request_data = request.get_json(force=True)
-    # img = request_data['img']
+    img = request_data['img']
     # file = request.files['image'].read()
-    file = Image.open(BytesIO(request.files['image'].read()))
+    # file = Image.open(BytesIO(request.files['image'].read()))
 
     print("file")
-    # img = np.array(img).reshape(-1, 224, 224, 3)
-    # print("reshape")
+    img = np.array(img).reshape(-1, 224, 224, 3)
+    print("reshape")
     # x = tf.keras.preprocessing.image.img_to_array(img)
     # x = np.expand_dims(x, axis=0)
     # x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
-    img = tf.keras.preprocessing.image.load_img(file)
-    print("passou aki")
-    x = tf.keras.preprocessing.image.img_to_array(img)
-    print("passou aki2")
-    x = np.expand_dims(x, axis=0)
-    print("passou aki3")
-    x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
+    # img = tf.keras.preprocessing.image.load_img(file)
+    # print("passou aki")
+    # x = tf.keras.preprocessing.image.img_to_array(img)
+    # print("passou aki2")
+    # x = np.expand_dims(x, axis=0)
+    # print("passou aki3")
+    # x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
     print("rodou x")
-    preds = model.predict(x)
+    preds = model.predict(img)
     print("predicted")
     label_map = {'dangerously deep': 0,
     'feet-dont-touch deep': 1,
