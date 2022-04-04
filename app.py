@@ -3,18 +3,8 @@ import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
 import os
-from openvino.runtime import Core
-
 
 model = tf.keras.models.load_model('model.h5',custom_objects={'KerasLayer':hub.KerasLayer})
-ie = Core()
-
-model = ie.read_model(model="road-segmentation-adas-0001.xml")
-compiled_model = ie.compile_model(model=model, device_name="CPU")
-
-input_layer_ir = compiled_model.input(0)
-output_layer_ir = compiled_model.output(0)
-
 print("loaded model")
 
 app = Flask(__name__)
@@ -24,9 +14,6 @@ def serve_model():
     print("entrou")
     request_data = request.get_json(force=True)
     img = request_data['img']
-    
-    result = compiled_model([img])[output_layer_ir]
-    print( np.argmax(result, axis=1).sum())
     # img = np.array(img).reshape(-1, 224, 224, 3)
     # print("reshape")
     # x = tf.keras.preprocessing.image.img_to_array(img)
