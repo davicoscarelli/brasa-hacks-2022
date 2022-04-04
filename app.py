@@ -18,10 +18,12 @@ def serve_model():
     # request_data = request.get_json(force=True)
     # img = request_data['img']
     file = request.files['image'].read()
+
+    w, h = image.size
     # file = Image.open(BytesIO(request.files['image'].read()))
 
     print("file")
-    img = np.array(file).reshape(-1, 224, 224, 3)
+    img = np.array(file).reshape(h, w, 3)
     print("reshape")
     # x = tf.keras.preprocessing.image.img_to_array(img)
     # x = np.expand_dims(x, axis=0)
