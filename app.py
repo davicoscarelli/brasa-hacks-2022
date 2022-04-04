@@ -21,7 +21,7 @@ def serve_model():
     # x = tf.keras.preprocessing.image.img_to_array(img)
     # x = np.expand_dims(x, axis=0)
     # x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
-    img = tf.keras.preprocessing.image.load_img(file, target_size=(224, 224))
+    img = tf.keras.preprocessing.image.load_img(file)
     print("passou aki")
     x = tf.keras.preprocessing.image.img_to_array(img)
     print("passou aki2")
