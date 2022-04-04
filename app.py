@@ -3,6 +3,9 @@ import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
 import os
+from io import BytesIO
+from PIL import Image
+
 
 model = tf.keras.models.load_model('model.h5',custom_objects={'KerasLayer':hub.KerasLayer})
 print("loaded model")
@@ -14,7 +17,9 @@ def serve_model():
     print("entrou")
     # request_data = request.get_json(force=True)
     # img = request_data['img']
-    file = request.files['image'].read()
+    # file = request.files['image'].read()
+    file = Image.open(BytesIO(request.files['image']))
+
     print("file")
     # img = np.array(img).reshape(-1, 224, 224, 3)
     # print("reshape")
