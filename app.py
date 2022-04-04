@@ -17,10 +17,8 @@ def serve_model():
     npimg = np.frombuffer(file, np.uint8)
     # print(npimg)
     # img = request_data['img']
-    img = np.array(npimg).reshape(-1, 224, 224, 3)
     print("reshape")
-    x = tf.keras.preprocessing.image.img_to_array(img)
-    x = np.expand_dims(x, axis=0)
+    x = np.expand_dims(npimg, axis=0)
     x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
     print("rodou x")
     preds = model.predict(x)
