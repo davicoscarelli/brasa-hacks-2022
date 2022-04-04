@@ -43,7 +43,7 @@ def serve_model():
         if value == np.argmax(preds):
             print('Predicted class is:', pred)
             print('With a confidence score of: ', np.max(preds))
-            return str(pred) +" "+ str(np.max(preds))
+            return str(pred.replace(" ", "_")) +" "+ str(np.max(preds))
 
     
   except Exception as e:
