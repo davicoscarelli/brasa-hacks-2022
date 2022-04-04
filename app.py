@@ -20,6 +20,7 @@ def serve_model():
     img = npimg.reshape(-1, 224, 224, 3)
     # print("reshape")
     # x = tf.keras.preprocessing.image.img_to_array(img)
+    print(img)
     x = np.expand_dims(img, axis=0)
     x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
     print("rodou x")
