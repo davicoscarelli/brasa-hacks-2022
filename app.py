@@ -15,8 +15,8 @@ def serve_model():
     # request_data = request.get_json(force=True)
     file = request.files['image'].read() ## byte file
     print(file)
-    # npimg = np.fromstring(file, np.uint8)
-    # print(npimg)
+    npimg = np.fromstring(file, np.uint8)
+    print(npimg)
     # img = request_data['img']
     # img = np.array(img).reshape(-1, 224, 224, 3)
     print("reshape")
