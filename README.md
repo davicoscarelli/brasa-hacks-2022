@@ -1,4 +1,7 @@
+<img width="644" alt="Screen Shot 2022-04-04 at 11 39 07 AM" src="https://user-images.githubusercontent.com/48040161/161465092-96cd7918-8508-4e33-bdf8-06b385ce9851.png">
+
 # Brasa Hacks 2022
+
 ## AI Implementation
 
 The in-line comments are present in the code.
