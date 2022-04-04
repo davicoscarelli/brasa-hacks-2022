@@ -20,7 +20,7 @@ def serve_model():
     file = request.files['image'].read()
 
     image = Image.open(BytesIO(file))
-    image.save("temp.jpg")
+    image.save("temp.png")
 
     print("file")
     # img = np.array(img).reshape(-1, 224, 224, 3)
@@ -28,7 +28,7 @@ def serve_model():
     # x = tf.keras.preprocessing.image.img_to_array(img)
     # x = np.expand_dims(x, axis=0)
     # x = tf.keras.applications.mobilenet_v2.preprocess_input(x)
-    img = tf.keras.preprocessing.image.load_img("temp.jpg")
+    img = tf.keras.preprocessing.image.load_img("temp.png")
     print("passou aki")
     x = tf.keras.preprocessing.image.img_to_array(img)
     print("passou aki2")
